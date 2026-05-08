@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Feliz Cumpleaños Tomatito!</title>
+    <style>
+        /* Fondo y estilo general neón */
+        body {
+            background-color: #0d0118;
+            color: #fff;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        /* Contenedor principal */
+        .card {
+            z-index: 10;
+            background: rgba(25, 0, 50, 0.8);
+            padding: 30px;
+            border-radius: 20px;
+            border: 3px solid #bc13fe;
+            box-shadow: 0 0 20px #bc13fe, inset 0 0 10px #bc13fe;
+            text-align: center;
+            max-width: 90%;
+        }
+
+        /* Texto Neón */
+        h1 {
+            font-size: 2.5rem;
+            color: #fff;
+            text-shadow: 0 0 10px #bc13fe, 0 0 20px #bc13fe, 0 0 40px #ff00ff;
+            margin-bottom: 20px;
+            text-transform: lowercase;
+        }
+
+        /* La imagen de tu novia */
+        .img-novia {
+            max-width: 350px;
+            width: 100%;
+            border-radius: 10px;
+            border: 2px solid #fff;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Lluvia de emojis */
+        .rain {
+            position: absolute;
+            top: -50px;
+            font-size: 2rem;
+            pointer-events: none;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(110vh) rotate(360deg); }
+        }
+
+        /* Efecto de fiesta al clic */
+        .confeti {
+            position: absolute;
+            font-size: 3rem;
+            pointer-events: none;
+            animation: pop 0.8s ease-out forwards;
+        }
+
+        @keyframes pop {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+    </style>
+</head>
+<body onclick="lanzarFiesta(event)">
+
+    <div class="card">
+        <h1>feliz cumpleaños tomatito</h1>
+        <img src="foto.jpg" alt="Tomatito" class="img-novia" onerror="this.src='https://via.placeholder.com/350x450/200040/bc13fe?text=Imagen+Pixel+Art'">
+        <p style="margin-top:15px; font-size: 0.9rem; color: #bc13fe;">Un fresquito</p>
+    </div>
+
+    <script>
+        const elementos = ['🦦', '💜', '💖', '🦦', '✨'];
+
+        // Función para crear la lluvia
+        function crearLluvia() {
+            const e = document.createElement('div');
+            e.classList.add('rain');
+            e.innerText = elementos[Math.floor(Math.random() * elementos.length)];
+            e.style.left = Math.random() * 100 + 'vw';
+            e.style.animationDuration = (Math.random() * 2 + 3) + 's';
+            e.style.opacity = Math.random();
+            document.body.appendChild(e);
+            setTimeout(() => e.remove(), 5000);
+        }
+
+        setInterval(crearLluvia, 200);
+
+        // Función para el emoji de fiesta al hacer clic
+        function lanzarFiesta(event) {
+            const f = document.createElement('div');
+            f.classList.add('confeti');
+            f.innerText = '🎉';
+            f.style.left = (event.clientX - 25) + 'px';
+            f.style.top = (event.clientY - 25) + 'px';
+            document.body.appendChild(f);
+            setTimeout(() => f.remove(), 800);
+        }
+    </script>
+</body>
+</html>
