@@ -82,7 +82,7 @@
 
     <div class="card">
         <h1>feliz cumpleaños tomatito</h1>
-       <img src="foto.jpg" alt="Tomatito" class="img-novia" onerror="this.src='https://via.placeholder.com/350x450/200040/bc13fe?text=Imagen+Pixel+Art'">
+        <img src="foto.jpg" alt="Tomatito" class="img-novia" onerror="this.src='https://via.placeholder.com/350x450/200040/bc13fe?text=Imagen+Pixel+Art'">
         <p style="margin-top:15px; font-size: 0.9rem; color: #bc13fe;">Un fresquito</p>
     </div>
 
@@ -116,25 +116,4 @@
     </script>
 </body>
 </html>
-<body onclick="lanzarFiesta(event); iniciarMusica()">
 
-    <audio id="musicaCumple" loop>
-        <source src="melodia.mp3" type="audio/mpeg">
-        Tu navegador no soporta el elemento de audio.
-    </audio>
-
-    <script>
-        // ... (mantén tus funciones de lluvia y confeti igual) ...
-
-        let musicaSonando = false;
-        function iniciarMusica() {
-            const audio = document.getElementById('musicaCumple');
-            if (!musicaSonando) {
-                audio.play().catch(error => console.log("El navegador bloqueó el audio inicial:", error));
-                musicaSonando = true;
-            }
-        }
-        
-        // ... (el resto de tu script) ...
-    </script>
-</body>
